@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="navbar-header logo">
       <h3><img src="img/logo.png" alt="logo" /> Office DJ</h3>
+      <h3><a href="/">Sign In</a></h3>
     </div>
     <div class="nav navbar-nav navbar-right">
       <h5>Logged in as: </h5>
@@ -39,8 +40,14 @@
 
     </div>
     <div class="col-sm-4 well">
-      <p>test</p>
-      <button class="btn btn-primary">Add Song</button>
+      <h3>Add Songs to Playlist</h3>
+      <form class="" action="/song" method="post">
+        <div class="form-group">
+          <label for="song">Search for Song</label>
+          <input type="text" name="song">
+      </div>
+        <button class="btn btn-primary" type="submit" name="button">Add Song</button>
+      </form>
     </div>
     <div class="col-sm-4 well">
       <div class="thumbnail">
