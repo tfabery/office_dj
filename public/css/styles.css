@@ -29,5 +29,46 @@
 @font-face {
   font-family: myneon;
   src: url(/fonts/neon.ttf);
+}
 
+ul {
+  list-style-type:none;
+  padding-left: 0px;
+}
+
+body {
+  background-color: rgba(51, 76, 91, 1);
+}
+
+.well {
+  background-color: rgba(180, 196, 205, .5);
+  border-width: thin;
+  border-color: rgba(35, 53, 64, 1);
+  color: white;
+}
+
+.thumbnail {
+  color: black;
+}
+
+.navbar-right {
+  padding-top: 1.5em;
+  padding-right: 2em;
+}
+
+.top-votes li{
+  text-align: left;
+}
+
+.row {
+  overflow: hidden;
+}
+
+.col {
+  margin-bottom: -99999px;
+  padding-bottom: 99999px;
+}
+
+.up-next li {
+  text-align: left;
 }

@@ -5,7 +5,7 @@ class CreateSongsPlaylistsDjsUsers < ActiveRecord::Migration
       t.string :password
     end
 
-    create_table :library do |t|
+    create_table :libraries do |t|
       t.string :name
     end
 

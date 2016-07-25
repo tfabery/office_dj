@@ -4,21 +4,25 @@
       <h3><img src="img/logo.png" alt="logo" /> Office DJ</h3>
     </div>
     <div class="nav navbar-nav navbar-right">
-      <h5>Logged in as: </h5>
-      <h6>Level 9</h6>
+      <h5><a href="/logout">Sign Out</a></h5>
     </div>
   </div>
 </nav>
 
 <div class="container text-center">
   <div class="row">
-    <div class="col-sm-3 well">
+    <div class="col-sm-3 col well">
       <div class="well">
-        <p>My Profile</p>
-        <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
+        <p>Tony2Nice</p>
+        <img src="/img/photo.jpeg" class="img-circle" height="65" width="65" alt="Avatar">
       </div>
       <div class="well">
-        <p>Level</p>
+        <p>Level 9</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width:80%">
+            80%
+          </div>
+        </div>
         <p>
           <span class="label label-default">News</span>
           <span class="label label-primary">W3Schools</span>
@@ -28,31 +32,62 @@
           <span class="label label-danger">Friends</span>
         </p>
       </div>
-      <div class="alert alert-success fade in">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <p><strong>Ey!</strong></p>
-        People are looking at your profile. Find out who.
+      <div class="well top-votes">
+        <p><strong>Top Upvotes</strong></p>
+        <ul>
+          <li>TLC - No Scrubs</li>
+          <li>Britney Spears - Stronger</li>
+          <li>Katy Perry - Firework</li>
+          <li>Chaka Khan - I'm Every Woman</li>
+          <li>Enya - Only Time</li>
+        </ul>
       </div>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
 
     </div>
-    <div class="col-sm-4 well">
-      <p>test</p>
-      <button class="btn btn-primary">Add Song</button>
-    </div>
-    <div class="col-sm-4 well">
-      <div class="thumbnail">
-        <h3>Now Playing:</h3>
-        <img src="paris.jpg" alt="Paris" width="400" height="300">
-        <p><strong>Artist Name</strong></p>
-        <p>Song Name</p>
-      </div>
+    <div class="col-sm-4 col well">
+      <h3>Search for Your Song:</h3>
+      <form class="form group" action="/song" method="post">
+        <input class="col-sm-10 input-sm" type="text" name="name" value="">
+        <button class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+      <br>
       <div class="well">
+        <h3>Your Search Results:</h3>
+        <br><br><br><br><br>
+      </div>
+      <div class="well team-channel">
+        <h3>Team Channel</h3>
+        <ul>
+          <li>Brian - Level 10</li>
+          <li>Tony - Level 9</li>
+          <li>Caleb - Level 8</li>
+          <li>Alvin - Level 7</li>
+          <li>Aaron - Level 6</li>
+          <li>Baron - Level 5</li>
+          <li>Caron - Level 4</li>
+          <li>Daron - Level 3</li>
+          <li>Earon - Level 2</li>
+          <li>Faron - Level 1</li>
+          <li>Garon - Level 1</li>
+          <li>Haron - Level 1</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-sm-5 col well">
+      <div class="thumbnail">
+        <h3>Now Playing: DJ Tony</h3>
+        <img src="/img/celine.jpg" alt="album" width="400" height="300">
+        <p><strong>Celine Dion</strong></p>
+        <p>My Heart Will Go On</p>
+      </div>
+      <div class="well up-next">
         <h3>Up Next:</h3>
         <ul>
-          <li><p><strong>DJ Name: </strong>Artist Name - Song Name</p><br>votes</li>
+          <li><p><strong>DJ Caleb: </strong>Jason Derulo - Wiggle &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button></p></li>
+          <li><p><strong>DJ Brian: </strong>Darude - Sandstorm &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-warning" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-off"></span></button></p></li>
         </ul>
       </div>
     </div>
