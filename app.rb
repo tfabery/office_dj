@@ -70,3 +70,7 @@ end
     @user = User.get(params.fetch("id").to_i)
     erb(:user)
   end
+
+  get '/main' do
+    erb :main
+  end
