@@ -8,7 +8,9 @@ gem 'sinatra'
 gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'bcrypt'
-
+gem 'sinatra-flash', require: 'sinatra/flash'
+gem 'warden'
+gem 'shotgun'
 
 group(:test) do
   gem 'rspec'
