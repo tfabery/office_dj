@@ -1,12 +1,23 @@
 .login {
   height: 99vh;
   width: 100vw;
-  background-image: url('/img/login.jpeg');
+  background-image: url(/img/login.jpeg);
   background-size: contain;
   background-repeat: no-repeat;
   color: hotpink;
+  font-family: myneon;
 }
 
-h1 .login {
-  font-size: 3em;
+.login a {
+  color: hotpink;
+}
+
+.login h1 {
+  font-size: 5em;
+}
+
+
+@font-face {
+  font-family: myneon;
+  src: url(/fonts/neon.ttf);
 }

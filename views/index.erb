@@ -4,13 +4,17 @@
     <h1>Team DJ!</h1>
 
     <form action="account" method="post">
-      <label for="name">Username:</label>
-      <input type="text" name="name">
-      <label for="password">Password:</label>
-      <input type="password" name="password">
-      <button type="submit" name="button">Join the Party</button>
+      <div class="form-group labels">
+        <label for="name">Username:</label>
+        <input type="text" name="name">
+      </div>
+      <div class="form-group labels">
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+      </div>
+      <button class="btn btn-success" type="submit" name="button">Join the Party</button>
     </form>
 
-    <a class="login" href="/">Sign Up</a>
+    <a href="/">Sign Up</a>
   </div>
 </div>
