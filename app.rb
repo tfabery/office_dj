@@ -7,6 +7,6 @@ get '/' do
   erb :index
 end
 
-post 'song' do
-  song = 
+get '/main' do
+  erb :main
 end

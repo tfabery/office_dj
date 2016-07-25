@@ -1,0 +1,14 @@
+.navbar {
+  color: #cccccc;
+}
+
+/*.navbar img {
+  width: 2em;
+  float: left;
+  padding-bottom: 1em
+}*/
+
+.logo img {
+  width: 2em;
+  padding-bottom: 1px;
+}
