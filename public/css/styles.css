@@ -6,6 +6,7 @@
   background-repeat: no-repeat;
   color: hotpink;
   font-family: myneon;
+  font-size: 2em;
 }
 
 .login a {
@@ -13,7 +14,7 @@
 }
 
 .login h1 {
-  font-size: 5em;
+  font-size: 3em;
 }
 
 
