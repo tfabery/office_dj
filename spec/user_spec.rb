@@ -8,4 +8,12 @@ describe 'User' do
       expect(test_user.username).to eq("djrock")
     end
   end
+
+  describe 'authenticate' do
+    it 'will return true for an authenticated user' do
+      test_user = User.new(:username => "djrock", :password => "12345")
+      test_user.save
+      expect(test_user.authenticate(12345)).to eq(true)
+    end
+  end
 end
