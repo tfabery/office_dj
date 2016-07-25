@@ -5,6 +5,9 @@ gem("sinatra-activerecord")
 gem("rake")
 gem("pg")
 gem("sinatra")
+gem 'data_mapper'
+gem 'dm-postgres-adapter'
+gem 'bcrypt'
 
 group(:test) do
   gem("rspec")

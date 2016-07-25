@@ -8,14 +8,12 @@ require('capybara/rspec')
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 require('./app')
+require('pry')
 
 RSpec.configure do |config|
   config.after(:each) do
-    Brand.all().each() do |brand|
-      brand.destroy()
-    end
-    Store.all().each() do |store|
-      store.destroy()
+    User.all().each() do |user|
+      user.destroy()
     end
   end
 end
