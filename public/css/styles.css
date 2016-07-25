@@ -1,0 +1,12 @@
+.login {
+  height: 99vh;
+  width: 100vw;
+  background-image: url('/img/login.jpeg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  color: hotpink;
+}
+
+h1 .login {
+  font-size: 3em;
+}
