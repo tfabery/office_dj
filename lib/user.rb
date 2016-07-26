@@ -3,8 +3,7 @@ require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'bcrypt'
 
-DataMapper.setup(:default, 'postgres://*******:*******@localhost/office_dj_test')
-
+DataMapper.setup(:default, 'postgres://briangrant:Kod@chrome3@localhost/briangrant')
 
 class User < ActiveRecord::Base
   include DataMapper::Resource

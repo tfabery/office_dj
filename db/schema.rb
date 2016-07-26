@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20160725171630) do
     t.integer "user_id"
   end
 
-  create_table "libraries", force: :cascade do |t|
+  create_table "library", force: :cascade do |t|
     t.string "name"
   end
 

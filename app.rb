@@ -79,6 +79,7 @@ end
       redirect '/login'
     end
     @user = User.get(params.fetch("id").to_i)
+    @songs = Library.first(10)
     # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
