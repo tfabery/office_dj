@@ -76,3 +76,9 @@ body {
 .search-field {
   color: black;
 }
+
+#playlist_submit {
+  border: none;
+  color: blue;
+  background: none;
+}

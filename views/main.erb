@@ -60,7 +60,12 @@
         <% if @songs.any? %>
         <ul>
           <% @songs.each do |track| %>
-          <li><%= track.artist %> - <%= track.name %></li>
+            <li>
+              <form class="" action="/song/<%=track.id%>" method="post">
+                <input type="hidden" name="libraryId" value="<%=track.id %>">
+                <button id="playlist_submit" type="submit" name="button"><%= track.artist %> - <%= track.name %></button>
+              </form>
+            </li>
           <% end %>
         </ul>
         <% else %>
@@ -97,6 +102,15 @@
       <div class="well up-next">
         <h3>Up Next:</h3>
         <ul>
+          <% if @playlist %>
+          <ul>
+            <% @playlist.each do |song| %>
+            <li><%= Library.find(song.library_id).name %></li>
+            <% end %>
+          </ul>
+          <% else %>
+          <p>empty</p>
+          <% end %>
           <li><p><strong>DJ Caleb: </strong>Jason Derulo - Wiggle &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button></p></li>
           <li><p><strong>DJ Brian: </strong>Darude - Sandstorm &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-warning" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-off"></span></button></p></li>
         </ul>
