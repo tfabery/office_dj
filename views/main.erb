@@ -15,7 +15,7 @@
   <div class="row">
     <div class="col-sm-3 col well">
       <div class="well">
-        <p>Tony2Nice</p>
+        <p><%=@user.username%></p>
         <img src="/img/photo.jpeg" class="img-circle" height="65" width="65" alt="Avatar">
       </div>
       <div class="well">
@@ -44,10 +44,6 @@
           <li>Enya - Only Time</li>
         </ul>
       </div>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-
     </div>
     <div class="col-sm-4 col well">
       <h3>Search for Your Song:</h3>
@@ -76,20 +72,13 @@
       </div>
       <div class="well team-channel">
         <h3>Team Channel</h3>
-        <ul>
-          <li>Brian - Level 10</li>
-          <li>Tony - Level 9</li>
-          <li>Caleb - Level 8</li>
-          <li>Alvin - Level 7</li>
-          <li>Aaron - Level 6</li>
-          <li>Baron - Level 5</li>
-          <li>Caron - Level 4</li>
-          <li>Daron - Level 3</li>
-          <li>Earon - Level 2</li>
-          <li>Faron - Level 1</li>
-          <li>Garon - Level 1</li>
-          <li>Haron - Level 1</li>
+        <% if @users.any? %>
+          <ul>
+            <% @users.each do |user|%>
+            <li>@<%= user.username%> - Level 10</li>
+          <%end%>
         </ul>
+        <%end%>
       </div>
     </div>
     <div class="col-sm-5 col well">
@@ -106,19 +95,22 @@
       </div>
       <div class="well up-next">
         <h3>Up Next:</h3>
-        <ul>
           <% if @playlist %>
           <ul>
             <% @playlist.each do |song| %>
-            <li><%= Dj.find(song.dj_id).name%>: <%= Library.find(song.library_id).artist %> - <%= Library.find(song.library_id).name %></li>
+            <li>@<%= Dj.find(song.dj_id).name%>: <%= Library.find(song.library_id).artist %> - <%= Library.find(song.library_id).name %>
+
+            <form class="voting" action="/song/song.id/downvote" method="post">
+              <button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button>
+            </form>
+            <form class="voting" action="/song/song.id/upvote" method="post">
+              <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button>
+            </form></li>
             <% end %>
           </ul>
           <% else %>
-          <p>empty</p>
+          <p>There are no songs in the queue.</p>
           <% end %>
-          <li><p><strong>DJ Caleb: </strong>Jason Derulo - Wiggle &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button></p></li>
-          <li><p><strong>DJ Brian: </strong>Darude - Sandstorm &nbsp; <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button><button class="btn-warning" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button><button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-off"></span></button></p></li>
-        </ul>
       </div>
     </div>
   </div>

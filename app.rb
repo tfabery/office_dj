@@ -71,6 +71,7 @@ end
     @songs = Library.last(10)
     @playlist = Song.all
     @now_playing = @playlist[0]
+    @users = User.all
     # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
