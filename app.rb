@@ -67,17 +67,19 @@ end
       redirect '/login'
     end
     @user = User.get(params.fetch("id").to_i)
-    @songs = Library.first(10)
+    @dj = Dj.find_by(user_id: @user.id)
+    @songs = Library.last(10)
+    @playlist = Song.all
     # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
 
-  get '/main' do
-    @playlist = Song.all
-    @tracks
-    @songs = Library.last(10)
-    erb :main
-  end
+  # get '/main' do
+  #   @playlist = Song.all
+  #   @tracks
+  #   @songs = Library.last(10)
+  #   erb :main
+  # end
 
   post '/song' do
     @tracks = RSpotify::Track.search(params.fetch 'name', limit: 10, market: 'US')
@@ -87,12 +89,12 @@ end
       popularity = track.popularity
       Library.create({name: track.name, artist: artist, popularity: popularity, album: album})
     end
-    redirect('/main')
+    redirect "/users/#{env['warden'].user.id}"
   end
 
   post '/song/:id' do
-    Song.create({library_id: params.fetch('libraryId')})
-    redirect '/main'
+    Song.create({library_id: params.fetch('libraryId'), dj_id: params.fetch('id')})
+    redirect "/users/#{env['warden'].user.id}"
   end
 
   get '/signup' do
@@ -103,8 +105,9 @@ end
     username = params.fetch("new_username")
     password = params.fetch("new_password")
     @user = User.first_or_create({:username => username, :password => password})
-    @songs = Library.first(10)
-    erb :main
+    dj = Dj.create({name: @user.username, user_id: @user.id})
+    @songs = Library.last(10)
+    redirect "/"
   end
 
   get '/login' do

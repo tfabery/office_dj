@@ -61,7 +61,7 @@
         <ul>
           <% @songs.each do |track| %>
             <li>
-              <form class="" action="/song/<%=track.id%>" method="post">
+              <form class="" action="/song/<%=@dj.id%>" method="post">
                 <input type="hidden" name="libraryId" value="<%=track.id %>">
                 <button id="playlist_submit" type="submit" name="button"><%= track.artist %> - <%= track.name %></button>
               </form>
@@ -105,7 +105,7 @@
           <% if @playlist %>
           <ul>
             <% @playlist.each do |song| %>
-            <li><%= Library.find(song.library_id).name %></li>
+            <li><%= Dj.find(song.dj_id).name%>: <%= Library.find(song.library_id).artist %> - <%= Library.find(song.library_id).name %></li>
             <% end %>
           </ul>
           <% else %>
