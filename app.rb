@@ -5,13 +5,21 @@ require 'pry'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
-use Rack::Session::Cookie
+use Rack::Session::Cookie, :secret => "WookieFoot"
 
 use Warden::Manager do |manager|
   manager.default_strategies :password
+  manager.failure_app = FailureApp
   manager.serialize_into_session {|user| user.id}
   manager.serialize_from_session {|id| User.get(id)}
 end
+
+use Warden::Manager do |config|
+    config.scope_defaults :default,
+      strategies: [:password],
+      action: '/unauthenticated'
+    config.failure_app = self
+  end
 
 Warden::Manager.before_failure do |env,opts|
   env['REQUEST_METHOD'] = 'POST'
@@ -23,27 +31,13 @@ Warden::Strategies.add(:password) do
   end
 
   def authenticate!
-    name = params.fetch("password")
+    name = params.fetch("username")
     user = User.first(:username => name )
     if user && user.authenticate(params.fetch("password"))
       success!(user)
     else
       fail!("Could not log in")
     end
-  end
-
-  def warden_handler
-    env['warden']
-  end
-
-  def check_authentication
-    unless warden_handler.authenticated?
-      redirect '/login'
-    end
-  end
-
-  def current_user
-    warden_handler.user
   end
 end
 
@@ -63,14 +57,40 @@ end
   end
 
   post '/unauthenticated' do
-    redirect '/'
+    erb :index
   end
 
   get '/users/:id' do
+    unless env['warden'].authenticated?
+      redirect '/login'
+    end
     @user = User.get(params.fetch("id").to_i)
-    erb(:user)
-  end
-
-  get '/main' do
     erb :main
   end
+
+  get '/signup' do
+    erb :signup_form
+  end
+
+  post '/users/new' do
+    username = params.fetch("new_username")
+    password = params.fetch("new_password")
+    @user = User.first_or_create({:username => username, :password => password})
+    erb :main
+  end
+
+  get '/login' do
+    redirect '/'
+  end
+
+  get '/logout' do
+    env['warden'].logout
+    redirect '/'
+  end
+
+
+class FailureApp < Sinatra::Application
+  post '/unauthenticated' do
+    erb :failed
+  end
+end

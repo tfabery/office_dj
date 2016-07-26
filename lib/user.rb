@@ -3,7 +3,8 @@ require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'bcrypt'
 
-DataMapper.setup(:default, 'postgres://Guest:guest@localhost/office_dj_test')
+DataMapper.setup(:default, 'postgres://briangrant:Kod@chrom3@localhost/office_dj_test')
+
 
 class User < ActiveRecord::Base
   include DataMapper::Resource
@@ -24,7 +25,6 @@ class User < ActiveRecord::Base
       false
     end
   end
-
 end
 
 DataMapper.finalize
@@ -35,6 +35,4 @@ if User.count == 0
   @user = User.create(username: "admin")
   @user.password = "admin"
   @user.save
-
-
 end
