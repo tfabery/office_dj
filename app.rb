@@ -70,6 +70,7 @@ end
     @dj = Dj.find_by(user_id: @user.id)
     @songs = Library.last(10)
     @playlist = Song.all
+    @now_playing = @playlist[0]
     # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
@@ -87,12 +88,14 @@ end
       artist = track.artists[0].name
       album = track.album.name
       popularity = track.popularity
-      Library.create({name: track.name, artist: artist, popularity: popularity, album: album})
+      pic = track.album.images[0].fetch("url")
+      Library.create({name: track.name, artist: artist, popularity: popularity, album: album, image: pic})
     end
     redirect "/users/#{env['warden'].user.id}"
   end
 
   post '/song/:id' do
+
     Song.create({library_id: params.fetch('libraryId'), dj_id: params.fetch('id')})
     redirect "/users/#{env['warden'].user.id}"
   end
