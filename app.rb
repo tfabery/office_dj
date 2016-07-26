@@ -68,7 +68,7 @@ end
 
   get '/users/:id' do
     @user = User.get(params.fetch("id").to_i)
-    erb(:user)
+    erb(:main)
   end
 
   get '/main' do
