@@ -6,6 +6,7 @@
     </div>
     <div class="nav navbar-nav navbar-right">
       <h5><a href="/logout">Sign Out</a></h5>
+      <h2><%= @user.username %></h2>
     </div>
   </div>
 </nav>
@@ -83,7 +84,7 @@
     <div class="col-sm-5 col well">
       <div class="thumbnail">
         <h3>Now Playing: DJ Tony</h3>
-        <img src="/img/celine.jpg" alt="album" width="400" height="300">
+        <img src="<%= %>" alt="album" width="400" height="300">
         <p><strong>Celine Dion</strong></p>
         <p>My Heart Will Go On</p>
         <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
