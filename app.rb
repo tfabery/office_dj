@@ -2,6 +2,7 @@ require("bundler/setup")
 Bundler.require(:default)
 require 'warden'
 require 'pry'
+require 'rspotify'
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
@@ -68,9 +69,20 @@ end
 
   get '/users/:id' do
     @user = User.get(params.fetch("id").to_i)
+    # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
 
   get '/main' do
+    @songs = Library.first(10)
     erb :main
+  end
+
+  post '/song' do
+    @tracks = RSpotify::Track.search(params.fetch 'name', limit: 10, market: 'US')
+    @tracks.each do |track|
+      Library.create({name: track.name})
+    end
+    binding.pry
+    redirect('/main')
   end

@@ -51,12 +51,21 @@
     <div class="col-sm-4 col well">
       <h3>Search for Your Song:</h3>
       <form class="form group" action="/song" method="post">
-        <input class="col-sm-10 input-sm" type="text" name="name" value="">
-        <button class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-search"></span></button>
+        <input class="col-sm-10 input-sm" type="text" name="name">
+        <button type="submit" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-search"></span></button>
       </form>
       <br>
       <div class="well">
         <h3>Your Search Results:</h3>
+        <% if @songs.any? %>
+        <ul>
+          <% @songs.each do |track| %>
+          <li><%= track.name %></li>
+          <% end %>
+        </ul>
+        <% else %>
+        <p> No results</p>
+        <% end %>
         <br><br><br><br><br>
       </div>
       <div class="well team-channel">

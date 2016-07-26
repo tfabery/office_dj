@@ -11,6 +11,7 @@ gem 'bcrypt'
 gem 'sinatra-flash', require: 'sinatra/flash'
 gem 'warden'
 gem 'shotgun'
+gem 'rspotify'
 
 group(:test) do
   gem 'rspec'
