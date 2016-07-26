@@ -2,6 +2,7 @@ require 'rubygems'
 require 'data_mapper'
 require 'dm-postgres-adapter'
 require 'bcrypt'
+require 'dm-validations'
 
 DataMapper.setup(:default, 'postgres://Guest:guest@localhost/office_dj')
 
@@ -10,8 +11,8 @@ class User < ActiveRecord::Base
   include BCrypt
 
   property :id, Serial, :key => true
-  property :username, String, :length => 3..50
-  property :password, BCryptHash
+  property :username, String, :unique => true, :length => 3..50
+  property :password, BCryptHash, :length => 1..100
 
 
   has_and_belongs_to_many :songs
