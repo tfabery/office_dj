@@ -57,10 +57,10 @@
       <br>
       <div class="well">
         <h3>Your Search Results:</h3>
-        <% if @songs %>
+        <% if @songs.any? %>
         <ul>
           <% @songs.each do |track| %>
-          <li><%= track.name %></li>
+          <li><%= track.artist %> - <%= track.name %></li>
           <% end %>
         </ul>
         <% else %>
@@ -92,6 +92,7 @@
         <img src="/img/celine.jpg" alt="album" width="400" height="300">
         <p><strong>Celine Dion</strong></p>
         <p>My Heart Will Go On</p>
+        <iframe src="https://embed.spotify.com/?uri=spotify:user:spotify:playlist:3rgsDhGHZxZ9sB9DQWQfuf" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
       </div>
       <div class="well up-next">
         <h3>Up Next:</h3>

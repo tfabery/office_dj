@@ -74,6 +74,7 @@ end
   end
 
   get '/main' do
+    @tracks
     @songs = Library.last(10)
     erb :main
   end
@@ -81,7 +82,10 @@ end
   post '/song' do
     @tracks = RSpotify::Track.search(params.fetch 'name', limit: 10, market: 'US')
     @tracks.each do |track|
-      Library.create({name: track.name})
+      binding.pry
+      artist = track.artists[0].name
+      album = track.album.name
+      Library.create({name: track.name, artist: artist, popularity: track.popularity, album: album})
     end
     redirect('/main')
   end
