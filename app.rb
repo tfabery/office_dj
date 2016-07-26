@@ -61,18 +61,6 @@ end
     erb :index
   end
 
-  post '/song' do
-    @tracks = RSpotify::Track.search(params.fetch 'name', limit: 10, market: 'US')
-    @tracks.each do |track|
-      Library.create({name: track.name})
-    end
-    redirect('/main')
-  end
-
-  get '/main' do
-    @songs = Library.first(10)
-    erb :main
-  end
 
   get '/users/:id' do
     unless env['warden'].authenticated?
