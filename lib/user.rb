@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
       false
     end
   end
-
 end
 
 DataMapper.finalize
@@ -35,6 +34,4 @@ if User.count == 0
   @user = User.create(username: "admin")
   @user.password = "admin"
   @user.save
-
-
 end
