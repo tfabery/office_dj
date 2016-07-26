@@ -74,7 +74,7 @@ end
   end
 
   get '/main' do
-    @songs = Library.first(10)
+    @songs = Library.last(10)
     erb :main
   end
 
@@ -83,6 +83,5 @@ end
     @tracks.each do |track|
       Library.create({name: track.name})
     end
-    binding.pry
     redirect('/main')
   end
