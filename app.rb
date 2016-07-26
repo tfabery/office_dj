@@ -92,6 +92,7 @@ end
     username = params.fetch("new_username")
     password = params.fetch("new_password")
     @user = User.first_or_create({:username => username, :password => password})
+    @songs = Library.first(10)
     erb :main
   end
 
