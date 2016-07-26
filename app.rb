@@ -70,6 +70,7 @@ end
     @dj = Dj.find_by(user_id: @user.id)
     @songs = Library.last(10)
     @playlist = Song.all
+    @users = User.all
     # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
