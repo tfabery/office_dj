@@ -84,7 +84,7 @@
     <div class="col-sm-5 col well">
       <div class="thumbnail">
         <h3>Now Playing: DJ <%=@user.username%></h3>
-        <% if @playlist && @songs %>
+        <% if @playlist.length > 0 && @songs.length > 0 %>
           <img src="<%= Library.find(@now_playing.library_id).image %>" alt="album" width="400" height="300">
         <% else %>
           <img src="/img/logo.png" alt="album" width="400" height="300">
