@@ -84,7 +84,11 @@
     <div class="col-sm-5 col well">
       <div class="thumbnail">
         <h3>Now Playing: DJ <%=@user.username%></h3>
-        <img src="<%= %>" alt="album" width="400" height="300">
+        <% if @playlist && @songs %>
+          <img src="<%= Library.find(@now_playing.library_id).image %>" alt="album" width="400" height="300">
+        <% else %>
+          <img src="/img/logo.png" alt="album" width="400" height="300">
+        <% end %>
         <p><strong>Celine Dion</strong></p>
         <p>My Heart Will Go On</p>
         <div class='embed-container'>
