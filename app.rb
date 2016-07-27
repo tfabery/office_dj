@@ -4,6 +4,7 @@ require 'warden'
 require 'pry'
 require 'rspotify'
 
+
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
 
 use Rack::Session::Cookie, :secret => "WookieFoot"
