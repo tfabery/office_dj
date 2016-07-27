@@ -100,12 +100,14 @@
             <% @playlist.each do |song| %>
             <li>@<%= Dj.find(song.dj_id).name%>: <%= Library.find(song.library_id).artist %> - <%= Library.find(song.library_id).name %>
 
-            <form class="voting" action="/song/song.id/downvote" method="post">
-              <button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button>
-            </form>
-            <form class="voting" action="/song/song.id/upvote" method="post">
-              <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button>
-            </form></li>
+              <% if !song.users.include? %>
+              <form class="voting" action="/song/<%= song.id %>/<%= @user.id %>/downvote" method="post">
+                <button class="btn-danger" type="button" name="button"><span class="glyphicon glyphicon-volume-down"></span></button>
+              </form>
+              <form class="voting" action="/song/<%= song.id/<%= @user.id %>/upvote %>" method="post">
+                <button class="btn-primary" type="button" name="button"><span class="glyphicon glyphicon-volume-up"></span></button>
+              </form></li>
+              <% end %>
             <% end %>
           </ul>
           <% else %>

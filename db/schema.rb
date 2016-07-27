@@ -32,9 +32,11 @@ ActiveRecord::Schema.define(version: 20160726225907) do
   end
 
   create_table "songs", force: :cascade do |t|
-    t.integer "spin_score"
-    t.integer "library_id"
-    t.integer "dj_id"
+    t.integer  "spin_score"
+    t.integer  "library_id"
+    t.integer  "dj_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "songs_users", force: :cascade do |t|

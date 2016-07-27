@@ -69,10 +69,9 @@ end
     @user = User.get(params.fetch("id").to_i)
     @dj = Dj.find_by(user_id: @user.id)
     @songs = Library.last(10)
-    @playlist = Song.all
+    @playlist = Song.where('created_at Between ? AND ?', DateTime.now.beginning_of_day, DateTime.now.end_of_day)
     @now_playing = @playlist[0]
     @users = User.all
-    # @dj = DJ.find_by({user_id: @user.id})
     erb(:main)
   end
 
@@ -98,6 +97,7 @@ end
   post '/song/:id' do
 
     Song.create({library_id: params.fetch('libraryId'), dj_id: params.fetch('id')})
+    Dj.find(params['id']).request
     redirect "/users/#{env['warden'].user.id}"
   end
 
@@ -109,7 +109,7 @@ end
     username = params.fetch("new_username")
     password = params.fetch("new_password")
     @user = User.first_or_create({:username => username, :password => password})
-    dj = Dj.create({name: @user.username, user_id: @user.id})
+    dj = Dj.create({name: @user.username, user_id: @user.id, requests: 4, vetos: 1})
     @songs = Library.last(10)
     redirect "/"
   end
@@ -123,6 +123,11 @@ end
     redirect '/'
   end
 
+  post '/song/:song_id/:user_id' do
+    user_id = params['user_id']
+    song = Song.find params['song_id']
+    song.update(:user_ids => [user_id])
+  end
 
 class FailureApp < Sinatra::Application
   post '/unauthenticated' do

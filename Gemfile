@@ -12,10 +12,10 @@ gem 'sinatra-flash', require: 'sinatra/flash'
 gem 'warden'
 gem 'shotgun'
 gem 'rspotify'
+gem 'pry'
 
 group(:test) do
   gem 'rspec'
   gem 'capybara'
-  gem 'pry'
   gem 'shoulda-matchers'
 end

@@ -21,6 +21,8 @@ class CreateSongsPlaylistsDjsUsers < ActiveRecord::Migration
       t.integer :spin_score
       t.integer :library_id
       t.integer :dj_id
+
+      t.timestamps
     end
 
     create_table :songs_users do |t|
